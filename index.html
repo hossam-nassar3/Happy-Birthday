@@ -2,230 +2,538 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Hajeeeeerrrr ❤️ 🎊🎂🎊</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Birthday Hajeeeeerrrr 🎂🎊</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg-top:   #1a0533;
+  --bg-bot:   #3b0764;
+  --gold:     #f9c74f;
+  --teal:     #43d9ad;
+  --white:    #ffffff;
+  --card-bg:  rgba(255,255,255,0.07);
+  --card-bdr: rgba(255,255,255,0.14);
+  --radius:   20px;
+  --shadow:   0 8px 32px rgba(0,0,0,0.35);
 }
 
 body {
-    overflow: hidden;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  min-height: 100dvh;
+  background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-bot) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+  position: relative;
 }
 
-.container {
-    text-align: center;
-    z-index: 10;
-    padding: 20px;
+/* ── stars ── */
+.stars { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.star  { position:absolute; background:white; border-radius:50%; animation:twinkle ease-in-out infinite alternate; }
+@keyframes twinkle {
+  from { opacity:0.1; transform:scale(0.8); }
+  to   { opacity:0.7; transform:scale(1.2); }
 }
 
-h1 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-    min-height: 80px;
+/* ── floating cakes ── */
+.cake {
+  position:fixed; pointer-events:none; z-index:1; user-select:none;
+  animation: floatUp linear forwards;
 }
-
-button {
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#thanksBtn {
-    padding: 15px 40px;
-    font-size: 20px;
-    background: white;
-    color: #ff4f81;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-#yesBtn {
-    padding: 20px 50px;
-    font-size: 24px;
-    background: #ff4f81;
-    color: white;
-    margin: 20px;
-}
-
-#noBtn {
-    padding: 8px 15px;
-    font-size: 12px;
-    background: white;
-    color: #ff4f81;
-    position: absolute;
-}
-
-.hidden {
-    display: none;
-}
-
-.heart {
-    position: absolute;
-    color: rgba(255,255,255,0.8);
-    animation: floatUp linear infinite;
-    font-size: 20px;
-}
-
 @keyframes floatUp {
-    0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-    }
-    30% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 0;
-    }
+  0%   { transform:translateY(110vh) rotate(-8deg); opacity:0; }
+  12%  { opacity:1; }
+  88%  { opacity:1; }
+  100% { transform:translateY(-12vh) rotate(8deg); opacity:0; }
 }
 
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    animation: fall 3s linear forwards;
+/* ── confetti ── */
+.confetti-piece {
+  position:fixed; border-radius:2px;
+  animation:confettiFall linear forwards;
+  pointer-events:none; z-index:2;
+}
+@keyframes confettiFall {
+  from { transform:translateY(-80px) rotate(0deg); opacity:1; }
+  to   { transform:translateY(110vh) rotate(800deg); opacity:0; }
 }
 
-@keyframes fall {
-    from {
-        transform: translateY(-100px) rotate(0deg);
-    }
-    to {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-    }
+/* ── card ── */
+.card {
+  position:relative; z-index:10;
+  width:min(92vw, 440px);
+  background:var(--card-bg);
+  border:1px solid var(--card-bdr);
+  border-radius:var(--radius);
+  padding:clamp(24px,6vw,40px);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.hidden { display:none !important; }
+
+/* ── page 1 ── */
+.emoji-big {
+  font-size:clamp(52px,14vw,80px);
+  display:block; margin-bottom:12px;
+  animation:bounce 1.6s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-10px); }
+}
+h1.headline {
+  font-family:'Pacifico',cursive; color:var(--gold);
+  font-size:clamp(1.55rem,5.5vw,2.2rem); line-height:1.3;
+  min-height:68px; margin-bottom:10px;
+  text-shadow:0 2px 12px rgba(249,199,79,0.4);
+}
+.sub {
+  color:rgba(255,255,255,0.72);
+  font-size:clamp(0.85rem,3.2vw,1rem);
+  margin-bottom:28px; font-weight:600;
+}
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  border:none; border-radius:50px; cursor:pointer;
+  font-family:'Nunito',sans-serif; font-weight:800;
+  transition:transform 0.18s ease, box-shadow 0.18s ease;
+  touch-action:manipulation;
+}
+.btn-primary {
+  background:linear-gradient(135deg,var(--teal),#1ca880);
+  color:var(--bg-top);
+  font-size:clamp(1rem,4vw,1.15rem);
+  padding:15px 38px;
+  box-shadow:0 6px 24px rgba(67,217,173,0.4);
+  width:100%; max-width:280px;
+}
+.btn-primary:hover { box-shadow:0 8px 28px rgba(67,217,173,0.55); transform:translateY(-2px); }
+
+/* ── page 2 (prank) ── */
+#page2 { overflow:visible; }
+
+h2.offer {
+  font-family:'Pacifico',cursive; color:var(--teal);
+  font-size:clamp(1.3rem,5vw,1.75rem);
+  margin-bottom:8px;
+  text-shadow:0 2px 10px rgba(67,217,173,0.35);
+  line-height:1.3;
+}
+.offer-note {
+  color:rgba(255,255,255,0.6);
+  font-size:clamp(0.82rem,3vw,0.95rem);
+  margin-bottom:30px; font-weight:600;
+}
+
+/* YES button – grows */
+#yesBtn {
+  background:linear-gradient(135deg,var(--teal),#1ca880);
+  color:var(--bg-top);
+  font-size:clamp(1rem,4vw,1.15rem);
+  padding:16px 44px;
+  box-shadow:0 6px 24px rgba(67,217,173,0.45);
+  display:block; margin:0 auto 14px;
+  transform-origin:center center;
+  transition:transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+}
+#yesBtn:hover { box-shadow:0 10px 32px rgba(67,217,173,0.6); }
+
+/* NO button – runs away (position:fixed, placed by JS) */
+#noBtn {
+  position:fixed;
+  background:transparent;
+  color:rgba(255,255,255,0.5);
+  font-size:clamp(0.72rem,2.6vw,0.85rem);
+  padding:9px 18px;
+  border:1.5px solid rgba(255,255,255,0.2);
+  border-radius:50px;
+  z-index:20;
+  transition:none;
+  white-space:nowrap;
+}
+
+/* ── order modal overlay ── */
+#orderModal {
+  position:fixed; inset:0; z-index:50;
+  background:rgba(10,2,24,0.78);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  padding:16px;
+  overflow-y:auto;
+}
+#orderModal.hidden { display:none !important; }
+
+.modal-card {
+  width:min(96vw,430px);
+  background:linear-gradient(160deg,#1e0845,#2d0b55);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:22px;
+  padding:clamp(20px,5vw,36px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.5);
+  text-align:center;
+}
+.modal-title {
+  font-family:'Pacifico',cursive; color:var(--gold);
+  font-size:clamp(1.2rem,4.5vw,1.55rem);
+  margin-bottom:4px;
+  text-shadow:0 2px 10px rgba(249,199,79,0.35);
+}
+.modal-sub {
+  color:rgba(255,255,255,0.55);
+  font-size:clamp(0.78rem,2.8vw,0.88rem);
+  margin-bottom:20px; font-weight:600;
+}
+
+.field-group {
+  display:flex; flex-direction:column; gap:13px;
+  margin-bottom:20px; text-align:left;
+}
+.field label {
+  display:block; color:var(--gold);
+  font-size:clamp(0.72rem,2.6vw,0.82rem);
+  font-weight:700; margin-bottom:5px;
+  letter-spacing:0.04em; text-transform:uppercase;
+}
+.field input,
+.field select,
+.field textarea {
+  width:100%;
+  background:rgba(255,255,255,0.09);
+  border:1.5px solid rgba(255,255,255,0.16);
+  border-radius:12px;
+  padding:11px 13px;
+  color:var(--white);
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(0.88rem,3.2vw,1rem);
+  font-weight:600; outline:none;
+  transition:border-color 0.2s, background 0.2s;
+  -webkit-appearance:none; appearance:none;
+}
+.field select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f9c74f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 13px center;
+  padding-right:34px; cursor:pointer;
+}
+.field select option { background:#2d0b55; color:var(--white); }
+.field input::placeholder,
+.field textarea::placeholder { color:rgba(255,255,255,0.3); }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:var(--teal);
+  background:rgba(67,217,173,0.08);
+}
+.field textarea { resize:none; min-height:72px; }
+
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea { border-color:#fb7185; }
+.err {
+  color:#fb7185; font-size:0.75rem; font-weight:700;
+  margin-top:4px; display:none;
+}
+.field.invalid .err { display:block; }
+
+/* send button */
+.btn-send {
+  background:linear-gradient(135deg,#25d366,#128c4e);
+  color:var(--white);
+  font-size:clamp(0.95rem,3.6vw,1.08rem);
+  padding:15px 28px;
+  width:100%; max-width:100%;
+  box-shadow:0 6px 20px rgba(37,211,102,0.4);
+  border-radius:50px;
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  border:none; cursor:pointer;
+  font-family:'Nunito',sans-serif; font-weight:800;
+  touch-action:manipulation;
+  transition:transform 0.18s, box-shadow 0.18s;
+}
+.btn-send:hover { box-shadow:0 8px 26px rgba(37,211,102,0.55); transform:translateY(-2px); }
+.wa-icon { width:20px; height:20px; flex-shrink:0; }
+
+/* ── page 3 confirmed ── */
+.confirmed-emoji {
+  font-size:clamp(60px,16vw,88px);
+  display:block; margin-bottom:14px;
+}
+h2.confirmed {
+  font-family:'Pacifico',cursive; color:var(--gold);
+  font-size:clamp(1.35rem,5vw,1.8rem); margin-bottom:10px;
+}
+.confirmed-sub {
+  color:rgba(255,255,255,0.65);
+  font-size:clamp(0.85rem,3.2vw,1rem);
+  font-weight:600; line-height:1.7;
 }
 </style>
 </head>
 <body>
 
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mp3">
+<audio id="bgMusic" loop preload="none">
+  <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<div id="hearts"></div>
+<div class="stars" id="stars"></div>
+<div id="cakes"></div>
 
-<div class="container" id="page1">
-    <h1 id="typewriter"></h1>
-    <button id="thanksBtn">Thanks ❤️</button>
+<!-- PAGE 1: Birthday greeting -->
+<div class="card" id="page1">
+  <span class="emoji-big">🎂</span>
+  <h1 class="headline" id="typewriter"></h1>
+  <p class="sub">Wishing you the best day ever ✨</p>
+  <button class="btn btn-primary" id="thanksBtn">Yay, thank you! 🎉</button>
 </div>
 
-<div class="container hidden" id="page2">
-    <h1>Your tomorrow's morning coffee is on me, OK? ☕❤️</h1>
-    <button id="yesBtn">I would love to</button>
-    <button id="noBtn">No thanks</button>
+<!-- PAGE 2: Prank page -->
+<div class="card hidden" id="page2">
+  <span style="font-size:clamp(36px,10vw,54px);display:block;margin-bottom:12px;">☕</span>
+  <h2 class="offer">Your tomorrow's morning<br>coffee is on me, OK?</h2>
+  <p class="offer-note">Just say the word 😄</p>
+  <button class="btn" id="yesBtn">I would love to 🎉</button>
+</div>
+
+<!-- NO button lives outside the card so it can roam the full screen -->
+<button class="btn hidden" id="noBtn">No thanks</button>
+
+<!-- ORDER MODAL -->
+<div id="orderModal" class="hidden">
+  <div class="modal-card">
+    <p class="modal-title">Your coffee order ☕</p>
+    <p class="modal-sub">Tell me exactly what you'd like!</p>
+
+    <div class="field-group">
+
+      <div class="field" id="f-order">
+        <label>What's your order?</label>
+        <input type="text" id="orderInput" placeholder="e.g. Oat milk latte, medium" autocomplete="off">
+        <span class="err">Please tell me what you'd like to drink</span>
+      </div>
+
+      <div class="field" id="f-time">
+        <label>When should I order it?</label>
+        <select id="timeInput">
+          <option value="">— Pick a time —</option>
+          <option>First thing in the morning</option>
+          <option>Mid-morning (around 10 AM)</option>
+          <option>After lunch (around 1 PM)</option>
+          <option>Afternoon (around 3–4 PM)</option>
+          <option>Evening</option>
+          <option>Anytime that works for you</option>
+        </select>
+        <span class="err">Please choose a time</span>
+      </div>
+
+      <div class="field" id="f-place">
+        <label>Which place do you prefer?</label>
+        <input type="text" id="placeInput" placeholder="e.g. Starbucks, Costa, local café…" autocomplete="off">
+        <span class="err">Please enter a preferred spot</span>
+      </div>
+
+      <div class="field" id="f-food">
+        <label>Anything to eat alongside? <span style="color:rgba(255,255,255,0.35);font-weight:600;text-transform:none;">(optional)</span></label>
+        <textarea id="foodInput" placeholder="e.g. Chocolate croissant, almond muffin, or nothing for now…"></textarea>
+      </div>
+
+    </div>
+
+    <button class="btn-send" id="sendBtn">
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Send on WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- PAGE 3: Confirmed -->
+<div class="card hidden" id="page3">
+  <span class="confirmed-emoji">🎊</span>
+  <h2 class="confirmed">Order sent!</h2>
+  <p class="confirmed-sub">
+    Your coffee is taken care of.<br>
+    Enjoy your special day, Hajer!
+  </p>
 </div>
 
 <script>
-const text = "Happy Birthday to you Hajer! 🎂❤️";
-const typewriter = document.getElementById("typewriter");
-const thanksBtn = document.getElementById("thanksBtn");
-const page1 = document.getElementById("page1");
-const page2 = document.getElementById("page2");
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-const music = document.getElementById("bgMusic");
-
-let index = 0;
-let growSize = 1;
-
-// Typewriter effect
-function typeEffect() {
-    if(index < text.length){
-        typewriter.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 100);
-    }
+// ── stars ──
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 60; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = Math.random() * 2.5 + 1;
+  s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${(Math.random()*2+1.5).toFixed(1)}s;animation-delay:${(Math.random()*3).toFixed(1)}s;`;
+  starsEl.appendChild(s);
 }
-typeEffect();
 
-// Floating hearts
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 6) + "s";
-    heart.style.fontSize = (Math.random() * 10 + 12) + "px";
-    document.body.appendChild(heart);
+// ── floating cakes ──
+const cakeEmojis = ['🎂','🎂','🎂','🧁','🎂','🎂','🎊'];
+function spawnCake() {
+  const el = document.createElement('div');
+  el.className = 'cake';
+  el.textContent = cakeEmojis[Math.floor(Math.random() * cakeEmojis.length)];
+  const size = Math.random() * 18 + 16;
+  const dur  = Math.random() * 5 + 7;
+  const delay = Math.random() * 1.5;
+  el.style.cssText = `left:${Math.random()*94}vw;font-size:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;`;
+  document.getElementById('cakes').appendChild(el);
+  setTimeout(() => el.remove(), (dur + delay + 0.5) * 1000);
+}
+for (let i = 0; i < 6; i++) spawnCake();
+setInterval(spawnCake, 1600);
 
+// ── confetti ──
+const COLORS = ['#f9c74f','#43d9ad','#f472b6','#818cf8','#fb923c','#34d399','#fff'];
+function launchConfetti(count = 80) {
+  for (let i = 0; i < count; i++) {
     setTimeout(() => {
-        heart.remove();
-    }, 7000);
-}
-setInterval(createHeart, 1800);
-
-// Confetti
-function launchConfetti() {
-    for(let i = 0; i < 100; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.backgroundColor = 
-            `hsl(${Math.random() * 360}, 100%, 50%)`;
-        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 3000);
-    }
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.cssText = `left:${Math.random()*100}vw;top:0;background:${COLORS[Math.floor(Math.random()*COLORS.length)]};animation-duration:${(Math.random()*1.8+2).toFixed(1)}s;animation-delay:${(Math.random()*0.6).toFixed(2)}s;border-radius:${Math.random()>0.5?'50%':'2px'};width:${Math.random()*8+5}px;height:${Math.random()*8+5}px;`;
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }, Math.random() * 400);
+  }
 }
 
-thanksBtn.onclick = () => {
-    music.play();
-    launchConfetti();
-    page1.classList.add("hidden");
-    page2.classList.remove("hidden");
-    moveNoButton();
+// ── typewriter ──
+const message = 'Happy Birthday, Hajer! 🎂🎊';
+const tw = document.getElementById('typewriter');
+let ti = 0;
+function type() {
+  if (ti < message.length) { tw.textContent += message[ti++]; setTimeout(type, 90); }
+}
+type();
+
+// ── elements ──
+const page1  = document.getElementById('page1');
+const page2  = document.getElementById('page2');
+const page3  = document.getElementById('page3');
+const noBtn  = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const modal  = document.getElementById('orderModal');
+const music  = document.getElementById('bgMusic');
+
+let yesBtnScale = 1;   // tracks how big yes button has grown
+let noEscapes   = 0;   // how many times no has been dodged
+
+// ── page 1 → page 2 ──
+document.getElementById('thanksBtn').onclick = () => {
+  music.play().catch(() => {});
+  launchConfetti();
+  page1.classList.add('hidden');
+  page2.classList.remove('hidden');
+  // show NO button and place it near bottom of card
+  noBtn.classList.remove('hidden');
+  placeNoBtn();
 };
 
-function moveNoButton() {
-    const maxX = window.innerWidth - noBtn.offsetWidth;
-    const maxY = window.innerHeight - noBtn.offsetHeight;
+// ── NO button logic ──
+function placeNoBtn(avoidRect) {
+  const bw = noBtn.offsetWidth  || 110;
+  const bh = noBtn.offsetHeight || 42;
+  const margin = 16;
+  const maxX = window.innerWidth  - bw - margin;
+  const maxY = window.innerHeight - bh - margin;
 
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top = Math.random() * maxY + "px";
+  let x, y, tries = 0;
+  do {
+    x = margin + Math.random() * maxX;
+    y = margin + Math.random() * maxY;
+    tries++;
+    // try to stay away from the card center
+    if (!avoidRect || tries > 20) break;
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const tooClose = Math.abs(x + bw/2 - cx) < 180 && Math.abs(y + bh/2 - cy) < 160;
+    if (!tooClose) break;
+  } while (true);
+
+  noBtn.style.left = x + 'px';
+  noBtn.style.top  = y + 'px';
 }
 
-noBtn.addEventListener("mouseover", () => {
-    moveNoButton();
-    growSize += 0.4;
-    yesBtn.style.transform = `scale(${growSize})`;
+// mouseover / touchstart → run away and grow yes
+function escapeNo(e) {
+  e && e.preventDefault();
+  noEscapes++;
+  placeNoBtn();
 
-    if(growSize >= 5){
-        yesBtn.style.position = "fixed";
-        yesBtn.style.top = "50%";
-        yesBtn.style.left = "50%";
-        yesBtn.style.transform = "translate(-50%, -50%) scale(7)";
-    }
-});
+  // grow YES button
+  yesBtnScale = Math.min(yesBtnScale + 0.28, 3.2);
+  yesBtn.style.transform = `scale(${yesBtnScale})`;
 
+  // after 5 escapes, add a little taunt label
+  if (noEscapes === 3)  noBtn.textContent = 'Nope 😏';
+  if (noEscapes === 5)  noBtn.textContent = 'Still no 😅';
+  if (noEscapes === 8)  noBtn.textContent = 'Give up? 😂';
+  if (noEscapes >= 11)  noBtn.style.display = 'none'; // vanish after enough tries
+}
+
+noBtn.addEventListener('mouseover',    escapeNo);
+noBtn.addEventListener('touchstart',   escapeNo, { passive: false });
+noBtn.addEventListener('click',        escapeNo);  // safety net
+
+// ── YES button → open order modal ──
 yesBtn.onclick = () => {
-    let order = prompt("Write down your coffee order here ☕❤️");
-
-    if(order){
-        const phone = "201285807388";
-        const msg = `Hey Hossam ❤️ My order is: ${order}`;
-        const whatsappURL =
-            `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-
-        alert("Take a screenshot and send it too 😍");
-        window.open(whatsappURL, "_blank");
-    }
+  noBtn.style.display = 'none';
+  launchConfetti(50);
+  modal.classList.remove('hidden');
 };
-</script>
 
+// ── send on WhatsApp ──
+document.getElementById('sendBtn').onclick = () => {
+  const order = document.getElementById('orderInput').value.trim();
+  const time  = document.getElementById('timeInput').value.trim();
+  const place = document.getElementById('placeInput').value.trim();
+  const food  = document.getElementById('foodInput').value.trim();
+
+  // validate
+  let valid = true;
+  if (!order) { document.getElementById('f-order').classList.add('invalid'); valid = false; }
+  else          document.getElementById('f-order').classList.remove('invalid');
+  if (!time)  { document.getElementById('f-time').classList.add('invalid');  valid = false; }
+  else          document.getElementById('f-time').classList.remove('invalid');
+  if (!place) { document.getElementById('f-place').classList.add('invalid'); valid = false; }
+  else          document.getElementById('f-place').classList.remove('invalid');
+  if (!valid) return;
+
+  const lines = [
+    `Hey Hossam, it's Hajer! Here is my coffee order:`,
+    ``,
+    `Order: ${order}`,
+    `Preferred time: ${time}`,
+    `Place: ${place}`,
+    `Food alongside: ${food || 'Nothing for now'}`,
+  ];
+
+  const phone  = '201285807388';
+  const waURL  = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
+  window.open(waURL, '_blank');
+
+  modal.classList.add('hidden');
+  page2.classList.add('hidden');
+  page3.classList.remove('hidden');
+  launchConfetti(100);
+};
+
+// dismiss validation on input
+['orderInput','placeInput','foodInput'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    document.getElementById(id).closest('.field').classList.remove('invalid');
+  });
+});
+document.getElementById('timeInput').addEventListener('change', () => {
+  document.getElementById('f-time').classList.remove('invalid');
+});
+</script>
 </body>
 </html>
